@@ -1,11 +1,15 @@
 ICJI - Cognos Connection JavaScript Interface
 Version 1.1.0
- 
+
+
 
 Copyright (c) 2008 Chris Bennett 
 This work is licensed under a Creative Commons 
   Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
 http://www.creativecommons.org/licenses/by-nc-sa/3.0/
+
+
+
 
 
 Quick Start:
@@ -17,7 +21,32 @@ ie. install_dir/webcontent/skins/addoholdings
 If your environment has more than one Gateway server, the files have to be on 
 all Gateways, in the same directory.
 
-After the files are on the Gateway(s) 
+After the files are on the Gateway(s) you're ready to build a report with the 
+code. Open a Report Studio report and add the following code to an HTML Item 
+at the top of the Prompt Page or Report Page you want to modify.
+
+
+<script type="text/javascript" src="/ibmcognos/...storage_directory/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/ibmcognos/...storage_directory/log4javascript.js"></script>
+<script type="text/javascript" src="/ibmcognos/...storage_directory/icji-1.1.0.min.js"></script>
+
+<script>
+  var $icji = jQuery.noConflict(true);
+  var log = log4javascript.getDefaultLogger();
+  log.setLevel(log4javascript.Level.ALL);
+  log4javascript.setEnabled(false);  // This turns off logging. If you want logging to run, comment this line.
+  log.trace("This is a debugging message from the log4javascript in-page page");
+</script>
+
+
+That's it, you're ready to start coding...
+
+At some point in the near future I'll build some samples. But, right now I 
+haven't told anyone this is available so I'm assumming no one except me 
+needs to know how to use it... :)
+
+
+
 
 
 Overview and History:
@@ -40,59 +69,40 @@ for modifing the report after the page loaded.
 
 The primary object that has been used to this point to access the Cognos objects
 in the browser up to this point has been the infamous "formWarpRequest". This 
-form element contained all the 
+form element contained all the elements that up would normally want to access. 
+However Cognos has a tendency to change the function of some of the object and 
+sometimes removes functionality altogether. For those of us that have been 
+around long enough, to experience the pain of upgrading a boat load of reports 
+that need to have there embedded and heavily duplicated JavaScript fixed 
+as a result of these changes, it's easy to understand why you would want a way 
+to isolate those potential problem.
+
+As a consultant, I've spent many hours at dozens of client sights being paid 
+to do nothing but fix broken JavaScript code during system upgraded. Thus was 
+the birth of ICJI. It started out about 4 years ago as a hodge podge of code 
+from dozens of experiences all in random .js files. As the years progressed 
+and my understanding of JavaScript deepened it morphed in to what it is today.
+Now, it's grown to the point that I feel it's time to start officially 
+tracking the changes I'm making. Becuase this code, in one name or another, 
+has been used at so many client sites, there will come a time when they'll 
+need to upgrade it to some new version of Cognos. When that time comes I want
+to be able to make good on my promise of making their upgrade as seemless as
+possible. ...at least from the perspective of the code I've written for them. 
+I make no promises for other peoples code! :)
 
 
-I'm a consultant and as such always assume that code will be modified, updated, 
-etc. If you are editing this code and have questions, find mistakes, have a more 
-efficient way to do something, etc. and are feeling generous, let me know 
-your thoughts: chris.bennett@addoholdings.com or contact me through my github 
-account:  https://github.com/meoutside
 
 
 
+About Me:
 
-This particualar version of this file has been built to run with 
-Cognos v8.4.1 It is untested on previous and future versions.
-
-
+I've been a Cognos consultant since 1999. I've done just about everything I can
+think of related to Cognos BI and related technologies - DB Architecture, ETL, 
+Cognos Admin, Modeling, Developement, web/web services developement.  As a 
+consultant I always assume that the code I write will eventually be modified, 
+updated, etc. If you are using this code and have questions, find mistakes, have 
+a more efficient way to do something, etc. and are feeling generous, let me 
+know your thoughts: chris.bennett@addoholdings.com or contact me through 
+my github account:  https://github.com/meoutside
 
 Thanks!
-
-On to the code...
-
-Where applicable, I've done my best to explain the code. Where I think it's 
-obvious I leave it alone. The comments have a tendency to make the 
-code quite large. Therefor, all my .js files get run through JSMin prior to 
-being placed in production.
-
-If you don't know about JSMin, then check this out:
-    http://javascript.crockford.com
-When it comes to JavaScript, IMHO, there is no one better to look to than 
-Douglas Crockford. So read up and code better...
-
-
-
-
-Old Modification History:  (didn't want to just ditch it...)
-
-Name               Date        Modification  
------------------  ----------  ----------------------------------------------
-Chris Bennett      2012-04-05 
-   - Created ICJI.Cognos.getGPM function
-   - Created ICJI.Cognos.getHtmlObject function
-   - Created ICJI.Cognos.getCognosViewerId function
-   - Removed ..isIE function - incorporating jQuery now - they have a much 
-         robust function for finding the browser type
-Chris Bennett      2012-04-10  
-   - Removed the ".Cognos" layer - seems redundant
-   - Removed redundant code from getGPM (same as getCognosViewerId)
-Chris Bennett      2012-04-12  
-   - Changed the behavior of the getGPM to test for possible options before
-     running the getCognosViewerId function
-Chris Bennett      2012-05-02
-   - Added "w" parameter to getGPM to allow for passing a specific DOM 
-     hierarchy to the function. "w" was also added to multiple other 
-     functions to pass the value.
-
-============================================================================= 
