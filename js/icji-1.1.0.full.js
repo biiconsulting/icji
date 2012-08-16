@@ -1,66 +1,10 @@
-/*! ICJI - Cognos Connection JavaScript Interface
+/*! ICJI - IBM Cognos JavaScript Interface
  *  Version 1.1.0
  *  
  *  Copyright (c) 2008 Chris Bennett 
  *  This work is licensed under a Creative Commons 
  *    Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
  *  http://www.creativecommons.org/licenses/by-nc-sa/3.0/
- */
-
-/** Modification History:
- *
- * Name               Date        Modification  
- * -----------------  ----------  ----------------------------------------------
- * Chris Bennett      2012-04-05 
- *    - Created ICJI.Cognos.getGPM function
- *    - Created ICJI.Cognos.getHtmlObject function
- *    - Created ICJI.Cognos.getCognosViewerId function
- *    - Removed ..isIE function - incorporating jQuery now - they have a much 
- *          robust function for finding the browser type
- * Chris Bennett      2012-04-10  
- *    - Removed the ".Cognos" layer - seems redundant
- *    - Removed redundant code from getGPM (same as getCognosViewerId)
- * Chris Bennett      2012-04-12  
- *    - Changed the behavior of the getGPM to test for possible options before
- *      running the getCognosViewerId function
- * Chris Bennett      2012-05-02
- *    - Added "w" parameter to getGPM to allow for passing a specific DOM 
- *      hierarchy to the function. "w" was also added to multiple other 
- *      functions to pass the value.
- *
- * ============================================================================= 
- *
- */
- 
-
-/** Additional Information
- * This .js is intended to provide some basic JavaScript functions for use in 
- * Cognos reports as well as other areas. I'm a consultant and as such always 
- * assume that code will be modified, updated, etc. once I leave.
- *
- * If you are editing this code and have questions, find mistakes, have a more 
- * efficient way to do something, etc. and are feeling generous, let me know 
- * your thoughts: chris.bennett@addoholdings.com
- *
- * This particualar version of this file has been built to run with 
- * Cognos v8.4.1 It is untested on previous and future versions.
- *
- * 
- * 
- * Thanks!
- * 
- * On to the code...
- * 
- * Where applicable, I've done my best to explain the code. Where I think it's 
- * obvious I leave it alone. The comments have a tendency to make the 
- * code quite large. Therefor, all my .js files get run through JSMin prior to 
- * being placed in production.
- * 
- * If you don't know about JSMin, then check this out:
- *     http://javascript.crockford.com
- * When it comes to JavaScript, IMHO, there is no one better to look to than 
- * Douglas Crockford. So read up and code better...
- * 
  */
 
 /*JSLint*/
