@@ -1,4 +1,4 @@
-#ICJI - Cognos Connection JavaScript Interface
+#ICJI - IBM Cognos JavaScript Interface
 
 
 ###About the Code:
@@ -14,40 +14,41 @@ code quite large. Therefor, all my .js files get run through JSMin prior to
 being placed in production. So remember to use the .min.js versions.
 
 
-###Tested versions### List of IBM Cognos BI versions it's been tested against.
+###Tested versions
 
-10.1.1
+List of IBM Cognos BI versions it's been tested against.
+
+
+- 10.1.1
 
 
 ###Release Notes
 
-####Modifications 2012-08-14:
+#####Modifications - 2012-08-14:
 
 - Initial release to github.com
 - Addition of readme.md
 - addition of release-notes.md
 
-####Older Update Notes:#### (didn't want to just ditch it...)
 
-============================================================================= 
-Name               Date        Modification  
------------------  ----------  ----------------------------------------------
-Chris Bennett      2012-04-05 
-   - Created ICJI.Cognos.getGPM function
-   - Created ICJI.Cognos.getHtmlObject function
-   - Created ICJI.Cognos.getCognosViewerId function
-   - Removed ..isIE function - incorporating jQuery now - they have a much 
-         robust function for finding the browser type
-Chris Bennett      2012-04-10  
-   - Removed the ".Cognos" layer - seems redundant
-   - Removed redundant code from getGPM (same as getCognosViewerId)
-Chris Bennett      2012-04-12  
-   - Changed the behavior of the getGPM to test for possible options before
+Older Update Notes: (didn't want to just ditch it...)
+
+#####Modifications - 2012-04-05 
+- Created ICJI.Cognos.getGPM function
+- Created ICJI.Cognos.getHtmlObject function
+- Created ICJI.Cognos.getCognosViewerId function
+- Removed ..isIE function - incorporating jQuery now - they have a much 
+  robust function for finding the browser type
+
+#####Modifications - 2012-04-10  
+- Removed the ".Cognos" layer - seems redundant
+- Removed redundant code from getGPM (same as getCognosViewerId)
+
+#####Modifications - 2012-04-12  
+- Changed the behavior of the getGPM to test for possible options before
      running the getCognosViewerId function
-Chris Bennett      2012-05-02
-   - Added "w" parameter to getGPM to allow for passing a specific DOM 
+
+#####Modifications - 2012-05-02
+- Added "w" parameter to getGPM to allow for passing a specific DOM 
      hierarchy to the function. "w" was also added to multiple other 
      functions to pass the value.
-
-============================================================================= 
-

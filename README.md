@@ -1,4 +1,4 @@
-﻿#ICJI - Cognos Connection JavaScript Interface
+﻿#ICJI - IBM Cognos JavaScript Interface
 
 Version 1.1.0
 
