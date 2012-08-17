@@ -45,7 +45,7 @@ That's it, you're ready to start coding...
 ###Samples:
 
 At some point in the near future I'll build some samples. But, right now I 
-haven't told anyone this is available so I'm assumming no one except me 
+haven't told anyone this is available so I'm assuming no one except me 
 needs to know how to use it... :)
 
 
@@ -53,8 +53,8 @@ needs to know how to use it... :)
 
 This .js is intended to provide some basic JavaScript functions for use in 
 IBM Cognos HTML based reports. When Cognos (not owned by IBM at the time) came 
-out with ReportNet it geared the report building toward browser base delievery
-of reports. As part of that push to deliever HTML reports, a feature was add 
+out with ReportNet it geared the report building toward browser base delivery
+of reports. As part of that push to deliver HTML reports, a feature was add 
 called the "HTML Item." This feature provided a way to embed HTML directly into
 the Report that was generate allowing the developer to access and modify the 
 generated report after it was delivered to the browser. This of course included
@@ -65,7 +65,7 @@ supplement the capabilities of the out-of-the-box Cognos Report Studio. Things
 that we thought should have been available were not. Things like setting the 
 default search options for a Search and Select prompt - not available... 
 However embedding some JavaScript into the report via an HTML Item allowed 
-for modifing the report after the page loaded. 
+for modifying the report after the page loaded. 
 
 The primary object that has been used to this point to access the Cognos objects
 in the browser up to this point has been the infamous "formWarpRequest". This 
@@ -83,10 +83,10 @@ the birth of ICJI. It started out about 4 years ago as a hodge podge of code
 from dozens of experiences all in random .js files. As the years progressed 
 and my understanding of JavaScript deepened it morphed in to what it is today.
 Now, it's grown to the point that I feel it's time to start officially 
-tracking the changes I'm making. Becuase this code, in one name or another, 
+tracking the changes I'm making. Because this code, in one name or another, 
 has been used at so many client sites, there will come a time when they'll 
 need to upgrade it to some new version of Cognos. When that time comes I want
-to be able to make good on my promise of making their upgrade as seemless as
+to be able to make good on my promise of making their upgrade as seamless as
 possible. ...at least from the perspective of the code I've written for them. 
 I make no promises for other peoples code! :)
 
@@ -95,12 +95,12 @@ I make no promises for other peoples code! :)
 
 I've been a Cognos consultant since 1999. I've done just about everything I can
 think of related to Cognos BI and related technologies - DB Architecture, ETL, 
-Cognos Admin, Modeling, Developement, web/web services developement.  As a 
+Cognos Admin, Modeling, Development, web/web services development.  As a 
 consultant I always assume that the code I write will eventually be modified, 
 updated, etc. If you are using this code and have questions, find mistakes, have 
 a more efficient way to do something, etc. and are feeling generous, let me 
 know your thoughts: chris.bennett@addoholdings.com or contact me through 
-my github account:  https://github.com/meoutside
+my github account:  https://github.com/addoholdings
 
 Thanks!
 
