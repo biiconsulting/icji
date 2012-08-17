@@ -30,8 +30,22 @@ List of IBM Cognos BI versions it's been tested against.
 - Addition of readme.md
 - addition of release-notes.md
 
+###A few Pre-GitHub Notes
 
-Older Update Notes: (didn't want to just ditch it...)
+(didn't want to just ditch them...)
+
+#####Modifications - 2012-05-02
+- Added "w" parameter to getGPM to allow for passing a specific DOM 
+     hierarchy to the function. "w" was also added to multiple other 
+     functions to pass the value.
+
+#####Modifications - 2012-04-12  
+- Changed the behavior of the getGPM to test for possible options before
+     running the getCognosViewerId function
+
+#####Modifications - 2012-04-10  
+- Removed the ".Cognos" layer - seems redundant
+- Removed redundant code from getGPM (same as getCognosViewerId)
 
 #####Modifications - 2012-04-05 
 - Created ICJI.Cognos.getGPM function
@@ -39,16 +53,3 @@ Older Update Notes: (didn't want to just ditch it...)
 - Created ICJI.Cognos.getCognosViewerId function
 - Removed ..isIE function - incorporating jQuery now - they have a much 
   robust function for finding the browser type
-
-#####Modifications - 2012-04-10  
-- Removed the ".Cognos" layer - seems redundant
-- Removed redundant code from getGPM (same as getCognosViewerId)
-
-#####Modifications - 2012-04-12  
-- Changed the behavior of the getGPM to test for possible options before
-     running the getCognosViewerId function
-
-#####Modifications - 2012-05-02
-- Added "w" parameter to getGPM to allow for passing a specific DOM 
-     hierarchy to the function. "w" was also added to multiple other 
-     functions to pass the value.
