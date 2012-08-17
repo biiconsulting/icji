@@ -1,4 +1,4 @@
-#ICJI - Cognos Connection JavaScript Interface
+﻿#ICJI - Cognos Connection JavaScript Interface
 
 Version 1.1.0
 
@@ -25,7 +25,7 @@ After the files are on the Gateway(s) you're ready to build a report with the
 code. Open a Report Studio report and add the following code to an HTML Item 
 at the top of the Prompt Page or Report Page you want to modify.
 
-```javascript
+```html
 <script type="text/javascript" src="/ibmcognos/...storage_directory/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="/ibmcognos/...storage_directory/log4javascript.js"></script>
 <script type="text/javascript" src="/ibmcognos/...storage_directory/icji-1.1.0.min.js"></script>
