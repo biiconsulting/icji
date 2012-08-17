@@ -1,18 +1,18 @@
-ICJI - Cognos Connection JavaScript Interface
+#ICJI - Cognos Connection JavaScript Interface
+
 Version 1.1.0
 
 
 
 Copyright (c) 2008 Chris Bennett 
+
 This work is licensed under a Creative Commons 
   Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
 http://www.creativecommons.org/licenses/by-nc-sa/3.0/
 
 
 
-
-
-Quick Start:
+###Quick Start:
 
 Save the files into the "webcontent" directory on the Cognos Gateway server. I 
 usually put then in a new directory under the skins directory in webcontent. 
@@ -25,7 +25,7 @@ After the files are on the Gateway(s) you're ready to build a report with the
 code. Open a Report Studio report and add the following code to an HTML Item 
 at the top of the Prompt Page or Report Page you want to modify.
 
-
+```javascript
 <script type="text/javascript" src="/ibmcognos/...storage_directory/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="/ibmcognos/...storage_directory/log4javascript.js"></script>
 <script type="text/javascript" src="/ibmcognos/...storage_directory/icji-1.1.0.min.js"></script>
@@ -37,19 +37,19 @@ at the top of the Prompt Page or Report Page you want to modify.
   log4javascript.setEnabled(false);  // This turns off logging. If you want logging to run, comment this line.
   log.trace("This is a debugging message from the log4javascript in-page page");
 </script>
-
+```
 
 That's it, you're ready to start coding...
+
+
+###Samples:
 
 At some point in the near future I'll build some samples. But, right now I 
 haven't told anyone this is available so I'm assumming no one except me 
 needs to know how to use it... :)
 
 
-
-
-
-Overview and History:
+###Overview and History:
 
 This .js is intended to provide some basic JavaScript functions for use in 
 IBM Cognos HTML based reports. When Cognos (not owned by IBM at the time) came 
@@ -91,10 +91,7 @@ possible. ...at least from the perspective of the code I've written for them.
 I make no promises for other peoples code! :)
 
 
-
-
-
-About Me:
+###About Me:
 
 I've been a Cognos consultant since 1999. I've done just about everything I can
 think of related to Cognos BI and related technologies - DB Architecture, ETL, 
@@ -106,3 +103,7 @@ know your thoughts: chris.bennett@addoholdings.com or contact me through
 my github account:  https://github.com/meoutside
 
 Thanks!
+
+
+
+

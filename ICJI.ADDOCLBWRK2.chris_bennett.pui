@@ -3,11 +3,11 @@ Active File Display Mode=3
 Active File Index=2
 Open File Line0=1126
 Open File Line1=10944
-Open File Line2=0
+Open File Line2=2
 Open File Line3=0
 Open File Pos0=1701
 Open File Pos1=12898
-Open File Pos2=664
+Open File Pos2=10126
 Open File Pos3=300
 Open File Window Pos0=0,1,-1,-1,-8,-30,50,50,1034,638
 Open File Window Pos1=0,1,-1,-1,-8,-30,75,75,1059,663
@@ -22,4 +22,4 @@ Remember Files=1
 
 [Project Information]
 Project Start=DC070800040010000C0034003A00000079
-Working Time=3065
+Working Time=3121
