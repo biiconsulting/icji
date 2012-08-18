@@ -14,9 +14,15 @@ http://www.creativecommons.org/licenses/by-nc-sa/3.0/
 
 ###Quick Start:
 
-Save the files into the "webcontent" directory on the Cognos Gateway server. I 
-usually put then in a new directory under the skins directory in webcontent. 
-ie. install_dir/webcontent/skins/addoholdings
+[Download the ICJI repository](https://github.com/addoholdings/icji/downloads) 
+and save the .zip or .tar.gz file. Decompress the 
+file and you will see two directories along with other files and directories. 
+These two are the only directories that you need to be concerned with.
+
+Move or Save the "js" and "css" directories into the "webcontent" directory 
+on the Cognos Gateway server. I usually put then in a new directory under 
+the skins directory in webcontent. 
+example. install_dir/webcontent/skins/icji
 
 If your environment has more than one Gateway server, the files have to be on 
 all Gateways, in the same directory.
