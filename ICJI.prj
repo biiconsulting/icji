@@ -17,6 +17,12 @@ CTags Legacy Support=0
 1=js\jquery-tablesorter-2.0.5b__custom.js
 2=css\jquery-tablesorter-2.0.5b__custom.css
 3=css\jquery-ui-1.8.18__custom.css
+4=css\jquery.mobile.structure-1.1.1.css
+5=css\jquery.mobile.structure-1.1.1.min.css
+6=css\jquery.mobile.theme-1.1.1.css
+7=css\jquery.mobile.theme-1.1.1.min.css
+8=css\jquery.mobile-1.1.1.css
+9=css\jquery.mobile-1.1.1.min.css
 [uemakeXp]
 ReleaseMode=0
 [Debug Settings]
