@@ -14,7 +14,7 @@ IBM Cognos obfuscates some of it's JavaScript code. As such you mush use the cor
 version of ICJI for the version of IBM Cognos you have.  Below is a reference 
 for version capatability.
 
-	ICJI Version          IBM Cognos Version
+ICJI Version		IBM Cognos Version
 
 	1.0.0 ............................ 8.4.1
 

@@ -19,10 +19,11 @@ being placed in production. So remember to use the .min.js versions.
 List of IBM Cognos BI versions it's been tested against. See "Version" section of 
 the README for more information.
 
-ICJI v1.0 - IBM Cognos BI v8.4.1
-ICJI v1.1 - 
-ICJI v1.2 - IBM Cognos BI v10.1.1
-ICJI v1.3 - IBM Cognos BI v10.2
+**ICJI v1.0** - IBM Cognos BI v8.4.1  
+**ICJI v1.1** -  
+**ICJI v1.2** - IBM Cognos BI v10.1.1  
+**ICJI v1.3** - IBM Cognos BI v10.2  
+
 
 ###Release Notes
 
