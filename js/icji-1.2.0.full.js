@@ -1,7 +1,7 @@
 /*! ICJI - IBM Cognos JavaScript Interface
- *  Version 1.1.0
+ *  Version 1.2.0
  *  
- *  Copyright (c) 2008 Chris Bennett 
+ *  Copyright (c) 2012 Chris Bennett 
  *  This work is licensed under a Creative Commons 
  *    Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
  *  http://www.creativecommons.org/licenses/by-nc-sa/3.0/
@@ -132,7 +132,7 @@ ICJI = {
       } else if (w['G_PM_RS']) {
         o = w['G_PM_RS_'];
       } else {
-        o = w['G_PM' + this.getCognosViewerId()];
+        o = w['G_PM_' + this.getCognosViewerId()];
       }
       return o; //Return the object
     },
@@ -279,10 +279,21 @@ ICJI = {
         /** This gets the F_Insert *container*
          *    -- part of the insertListValue function            
          *
-         *  _c4 - contains the C_Choices object - "PRMTCompiled.js" search 
-         *          for something like "new C_Choices(this);"
+         *  This looks like it's coming from prmt_core.js file now.
+         *  I left the PRMTCompiled.js in there just in case though...
+         *
+         *  _ek - contains the C_Choices object - "PRMTCompiled.js" search 
+         *          for something like "this._ek = new C_Choices(this);"
+         *
+         *  _dY - contains the C_Choices object - "prmt_core.js" search 
+         *          for something like "this._dY = new C_Choices(this);"
          */
-        return ICJI.getGPM(w).getControlByName(f)._c4;
+        
+        if (ICJI.getGPM(w).getControlByName(f)._ek) {
+          return ICJI.getGPM(w).getControlByName(f)._ek;
+        } else {
+          return ICJI.getGPM(w).getControlByName(f)._dY;
+        }
     },
     /**
      *  function to add select options
@@ -324,6 +335,7 @@ ICJI = {
      *  Function to remove the labels on list prompts
      */
     removeListLabels: function (f, n) {
+        /*
         var o = document.getElementById(ICJI.getObjectInfo.oName(f));
         if (n > 1) {
             o.removeChild(o.options[1]);
@@ -331,6 +343,8 @@ ICJI = {
         o.removeChild(o.options[0]);
         ICJI.getObject(f)._dE.removeAttribute('hasLabel');
         ICJI.setObjectValue(f);
+        */
+        console.log('ICJI - Deprecation Notice\nFunction removeListLabels() is no longer valid.\nPlease update your report to use the built-in IBM Cognos functionality.');
     },
     /**
      *  Function to check or uncheck all items with Cognos' functions
@@ -354,16 +368,30 @@ ICJI = {
     setDateValue: function (f, d) {
         /** 
          * getFormatDate(d, 'YMD'); Cognos function in the CDatePickerCommon.js 
-         * file and _eC is a compiled function that begins in the PRMTcompiled.js
+         *
+         *  This looks like it's coming from prmt_core.js file now.
+         *  I left the PRMTCompiled.js in there just in case though...
+         *
+         * _fZ is a compiled function that begins in the PRMTcompiled.js
+         *    - search for cognos.Prompt.Control.Date - clearValues function -
+         *      this._gc(("" + new Date())); - whatever "_gc" is set to...
+         *
+         * _ft is a compiled function that begins in the prmt_core.js
+         *    - search for cognos.Prompt.Control.Date - clearValues function -
+         *      this._gc(("" + new Date())); - whatever "_gc" is set to...
          *
          * This'll definitely break during the next upgrade. But basically 
-         * you'll be looking for a single-line function that run 
-         * this._hx.setValue function where the "_hx" is also a compiled name.
+         * you'll be looking for a single-line function that runs 
+         * this._gc.setValue function where the "_hx" is also a compiled name.
          */
-        if (d === '' || typeof(d) === 'undefined') {
-            ICJI.getObject(f)._eC('');
+        
+        var o = ICJI.getObject(f);
+        d = (d === '' || typeof(d) === 'undefined') ? '' : getFormatDate(d, 'YMD');
+        
+        if (typeof o._fZ !== 'undefined') {
+          o._fZ(d);
         } else {
-            ICJI.getObject(f)._eC(getFormatDate(d, 'YMD'));
+          o._ft(d);
         }
         
     },

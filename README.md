@@ -1,15 +1,28 @@
 ﻿#ICJI - IBM Cognos JavaScript Interface
 
-Version 1.1.0
 
-
-
-Copyright (c) 2008 Chris Bennett 
+Copyright (c) 2008 - 2012 Chris Bennett 
 
 This work is licensed under a Creative Commons 
   Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
 http://www.creativecommons.org/licenses/by-nc-sa/3.0/
 
+
+###Version Information
+
+Cognos Obfuscates some of it's JavaScript code. As such you mush use the correct
+version of ICJI depending on what version of Cognos you have.  Below is a reference 
+for version capatability.
+
+	ICJI Version          IBM Cognos Version
+
+	1.0.0 ............................ 8.4.1
+
+	1.1.0 ................... Not Yet Tested
+
+	1.2.0 ........................... 10.1.1
+
+	1.3.0 ............................. 10.2
 
 
 ###Quick Start:

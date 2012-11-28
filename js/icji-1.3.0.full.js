@@ -1,7 +1,7 @@
 /*! ICJI - IBM Cognos JavaScript Interface
- *  Version 1.1.0
+ *  Version 1.3.0
  *  
- *  Copyright (c) 2008 Chris Bennett 
+ *  Copyright (c) 2012 Chris Bennett 
  *  This work is licensed under a Creative Commons 
  *    Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
  *  http://www.creativecommons.org/licenses/by-nc-sa/3.0/
@@ -124,27 +124,15 @@ ICJI = {
       if (typeof w === "undefined" || !w) {
         w = window;
       }
-      var o;
-      if (w['G_PM_THIS_']) {
-        o = w['G_PM_THIS_'];
-      } else if (w['G_PM_NS_']) {
-        o = w['G_PM_NS_'];
-      } else if (w['G_PM_RS']) {
-        o = w['G_PM_RS_'];
-      } else {
-        o = w['G_PM' + this.getCognosViewerId()];
-      }
-      return o; //Return the object
+      return w.cognos.Report.getReport().prompt; //Return the object
     },
     getCognosViewerId: function () {
       // try to find the G_PM suffix.
       var s = '';
       if (window.gCognosViewer !== undefined) {
-        s = '_THIS_'; // default incase the next two don't return
+        s = '_THIS_'; // default incase the next doesn't return
         if(window.gCognosViewer.m_sId !== undefined) {
             s = window.gCognosViewer.m_sId;
-        } else {
-            s = _kJ;
         }
       }
       return s; //Return the object
@@ -173,7 +161,7 @@ ICJI = {
     getObjectInfo: {          
         oId: function (f, w) {
             if (ICJI.isValidObject(f, w)) {
-                return ICJI.getGPM(w).getControlByName(f)._id_
+                return ICJI.getObject(f, w)._id_
             } else {
                 return false;
             }
@@ -181,7 +169,7 @@ ICJI = {
         oName: function(f, w) {
             var s = '';   
             if (ICJI.isValidObject(f, w)) {
-                switch (ICJI.getGPM(w).getControlByName(f).n) {                
+                switch (ICJI.getObject(f, w).n) {                
                     case 'selectValue':
                         s = 'PRMT_SV_' + this.oId(f, w);
                         break;
@@ -269,7 +257,7 @@ ICJI = {
         },           
         oParamName: function (f, w) {
             if (ICJI.isValidObject(f, w)) {
-                return ICJI.getGPM(w).getControlByName(f)['@parameter'];
+                return ICJI.getObject(f, w)['@parameter'];
             } else {
                 return false;
             }
@@ -279,10 +267,21 @@ ICJI = {
         /** This gets the F_Insert *container*
          *    -- part of the insertListValue function            
          *
-         *  _c4 - contains the C_Choices object - "PRMTCompiled.js" search 
-         *          for something like "new C_Choices(this);"
+         *  This looks like it's coming from prmt_core.js file now.
+         *  I left the PRMTCompiled.js in there just in case though...
+         *
+         *  _eq - contains the C_Choices object - "PRMTCompiled.js" search 
+         *          for something like "this._eq = new C_Choices(this);"
+         *
+         *  _d6 - contains the C_Choices object - "prmt_core.js" search 
+         *          for something like "this._d6 = new C_Choices(this);"
          */
-        return ICJI.getGPM(w).getControlByName(f)._c4;
+        
+        if (ICJI.getGPM(w).getControlByName(f)._eq) {
+          return ICJI.getObject(f, w)._eq;
+        } else {
+          return ICJI.getObject(f, w)._d6;
+        }
     },
     /**
      *  function to add select options
@@ -314,7 +313,7 @@ ICJI = {
         }
     },
     isValidObject: function (f, w) {
-        if (ICJI.getGPM(w).getControlByName(f)) {
+        if (ICJI.getObject(f, w)) {
             return true;
         } else {
             return false;
@@ -322,8 +321,11 @@ ICJI = {
     },
     /**
      *  Function to remove the labels on list prompts
+     *  
+     *  Deprecated - Part of Report Studios built in capability now.
      */
     removeListLabels: function (f, n) {
+        /*
         var o = document.getElementById(ICJI.getObjectInfo.oName(f));
         if (n > 1) {
             o.removeChild(o.options[1]);
@@ -331,6 +333,8 @@ ICJI = {
         o.removeChild(o.options[0]);
         ICJI.getObject(f)._dE.removeAttribute('hasLabel');
         ICJI.setObjectValue(f);
+        */
+        console.log('ICJI - Deprecation Notice\nFunction removeListLabels() is no longer valid.\nPlease update your report to use the built-in IBM Cognos functionality.');
     },
     /**
      *  Function to check or uncheck all items with Cognos' functions
@@ -354,18 +358,31 @@ ICJI = {
     setDateValue: function (f, d) {
         /** 
          * getFormatDate(d, 'YMD'); Cognos function in the CDatePickerCommon.js 
-         * file and _eC is a compiled function that begins in the PRMTcompiled.js
+         *
+         *  This looks like it's coming from prmt_core.js file now.
+         *  I left the PRMTCompiled.js in there just in case though...
+         *
+         * _gc is a compiled function that begins in the PRMTcompiled.js
+         *    - search for cognos.Prompt.Control.Date - clearValues function -
+         *      this._gc(("" + new Date())); - whatever "_gc" is set to...
+         *
+         * _fF is a compiled function that begins in the prmt_core.js
+         *    - search for cognos.Prompt.Control.Date - clearValues function -
+         *      this._gc(("" + new Date())); - whatever "_gc" is set to...
          *
          * This'll definitely break during the next upgrade. But basically 
-         * you'll be looking for a single-line function that run 
-         * this._hx.setValue function where the "_hx" is also a compiled name.
+         * you'll be looking for a single-line function that runs 
+         * this._gc.setValue function where the "_hx" is also a compiled name.
          */
-        if (d === '' || typeof(d) === 'undefined') {
-            ICJI.getObject(f)._eC('');
-        } else {
-            ICJI.getObject(f)._eC(getFormatDate(d, 'YMD'));
-        }
         
+        var o = ICJI.getObject(f);
+        d = (d === '' || typeof(d) === 'undefined') ? '' : getFormatDate(d, 'YMD');
+        
+        if (typeof o._gc !== 'undefined') {
+          o._gc(d);
+        } else {
+          o._fF(d);
+        }
     },
     /**
      *  Sets the value of a Cognos Dropdown list
@@ -386,8 +403,8 @@ ICJI = {
      * Simply runs the checkData() function on any object, but you never know 
      *  when they'll change it...
      */
-    setObjectValue: function (n, w) {
-        return ICJI.getGPM(w).getControlByName(n).checkData();
+    setObjectValue: function (f, w) {
+        return ICJI.getObject(f, w).checkData();
     },
     
     /**
