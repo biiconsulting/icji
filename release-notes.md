@@ -16,13 +16,30 @@ being placed in production. So remember to use the .min.js versions.
 
 ###Tested versions
 
-List of IBM Cognos BI versions it's been tested against.
+List of IBM Cognos BI versions it's been tested against. See "Version" section of 
+the README for more information.
 
-
-- 10.1.1
-
+ICJI v1.0 - IBM Cognos BI v8.4.1
+ICJI v1.1 - 
+ICJI v1.2 - IBM Cognos BI v10.1.1
+ICJI v1.3 - IBM Cognos BI v10.2
 
 ###Release Notes
+
+#####Modifications - 2012-11-28:
+
+- Added Sub-Versions of the code that correspond to IBM Cognos versions (See new README Version section).
+- Created v1.3 and updated code to be compatible with IBM Cognos 10.2.
+- Added a "toInt" function to the Array prototype.
+- getButtonForFInsert - created test for call to PRMTCompiled.js and prmt_core.js
+- Deprecated removeListLabels from both v1.2 and v1.3.
+- setDateValue - created test for call to PRMTCompiled.js and prmt_core.js
+- Added a "utils" object to the ICJI code that includes date manipulate objects.
+- Updated README.
+
+Version 1.3
+- getGPM - the "G_PM" object no longer exists in Cognos 10.2 - this was converted to use the "cognos.Report.getReport().prompt" object
+- Consolidated all getGPM(w).getControlByName(f) to getObject(f, w) calls.
 
 #####Modifications - 2012-08-14:
 

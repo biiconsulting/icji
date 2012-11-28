@@ -10,8 +10,8 @@ http://www.creativecommons.org/licenses/by-nc-sa/3.0/
 
 ###Version Information
 
-Cognos Obfuscates some of it's JavaScript code. As such you mush use the correct
-version of ICJI depending on what version of Cognos you have.  Below is a reference 
+IBM Cognos obfuscates some of it's JavaScript code. As such you mush use the correct
+version of ICJI for the version of IBM Cognos you have.  Below is a reference 
 for version capatability.
 
 	ICJI Version          IBM Cognos Version
