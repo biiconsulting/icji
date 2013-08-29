@@ -79,6 +79,20 @@ String.prototype.trim = function () {
   this.replace(/\s+$/,'');
   return this;
 }
+/**
+ * Add the indexOf item if it doesn't already exist.
+ */
+if (!Array.prototype.indexOf) {
+  Array.prototype.indexOf = function (o) {
+    var l = this.length + 1;
+    while (l -= 1) {
+      if (this[l - 1] === o) {
+        return true;
+      }
+    }
+    return false;
+  }
+}
 
 
 /**

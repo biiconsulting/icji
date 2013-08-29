@@ -1,13 +1,30 @@
 [Open Files]
 Active File Display Mode=3
-Active File Index=0
+Active File Index=4
 Open File Line0=0
-Open File Pos0=1270
-Open File Window Pos0=2,3,-1,-1,-8,-30,150,150,1053,736
-Open File0=.\js\icji-1.1.0.full.js
-Open File1=
+Open File Line1=7873
+Open File Line2=23713
+Open File Line3=0
+Open File Line4=1320
+Open File Pos0=3731
+Open File Pos1=0
+Open File Pos2=0
+Open File Pos3=140
+Open File Pos4=0
+Open File Window Pos0=0,1,-1,-1,-8,-30,0,0,1087,509
+Open File Window Pos1=0,1,-1,-1,-8,-30,25,25,1091,609
+Open File Window Pos2=0,1,-1,-1,-8,-30,75,75,1141,659
+Open File Window Pos3=0,1,-1,-1,-8,-30,150,150,1018,734
+Open File Window Pos4=2,3,-1,-1,-8,-30,175,175,1043,759
+Open File0=E:\AddoHoldings\Clients\CU\Collapse.js
+Open File1=E:\AddoHoldings\Clients\CU\__NewBeginPages.js
+Open File2=E:\AddoHoldings\Clients\CU\cuedu-full.js
+Open File3=.\js\jquery-tablesorter-2.0.5b__custom.js
+Open File4=C:\Program Files (x86)\ibm\cognos\c10_1_1\webcontent\skins\addoholdings\js\jquery.dragtable.js
+Open File5=
 Remember Files=1
 
 [Project Information]
 Project Start=DC07080003001D0016000F001100000041
-Working Time=59898
+Working Time=59910
+
