@@ -1,7 +1,7 @@
 ﻿#ICJI - IBM Cognos JavaScript Interface
 
 
-Copyright (c) 2008 - 2012 Chris Bennett 
+Copyright (c) 2008 - 2013 Chris Bennett 
 
 This work is licensed under a Creative Commons 
   Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
@@ -53,7 +53,7 @@ at the top of the Prompt Page or Report Page you want to modify.
   var $icji = jQuery.noConflict(true);
   var log = log4javascript.getDefaultLogger();
   log.setLevel(log4javascript.Level.ALL);
-  log4javascript.setEnabled(false);  // This turns off logging. If you want logging to run, comment this line.
+  log4javascript.setEnabled(false);  // This turns off logging. If you want logging to run, comment this line.
   log.trace("This is a debugging message from the log4javascript in-page page");
 </script>
 ```
@@ -63,10 +63,12 @@ That's it, you're ready to start coding...
 
 ###Samples:
 
-At some point in the near future I'll build some samples. But, right now I 
-haven't told anyone this is available so I'm assuming no one except me 
-needs to know how to use it... :)
+I've created a few samples for table sorting and column dragging.
+* [Sort a Report List](https://github.com/addoholdings/icji/wiki/Sort-a-Report-List)
+* [Reorder Columns in a Report List](https://github.com/addoholdings/icji/wiki/Reorder-Columns)
+* [Combined Sort and Reorder](https://github.com/addoholdings/icji/wiki/Sort-and-Drag-Columns-on-a-List-Report)
 
+You can also read a little about the code on the [wiki page.](https://github.com/addoholdings/icji/wiki)
 
 ###Overview and History:
 
@@ -122,7 +124,3 @@ know your thoughts: chris.bennett@addoholdings.com or contact me through
 my github account:  https://github.com/addoholdings
 
 Thanks!
-
-
-
-

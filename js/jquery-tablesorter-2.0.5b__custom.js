@@ -712,7 +712,8 @@ id: "currency",
 is: function (s) {
 return /^[£$€?.]/.test(s);
 }, format: function (s) {
-return $.tablesorter.formatFloat(s.replace(new RegExp(/[£$€]/g), ""));
+var rgx = /\((.+?)\)/;
+return $.tablesorter.formatFloat((s.match(rgx) === null ? s : '-' + s.match(rgx)[1]).replace(new RegExp(/[£$€\)]/g), ""));
 }, type: "numeric"
 });
 
