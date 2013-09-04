@@ -53,7 +53,7 @@ at the top of the Prompt Page or Report Page you want to modify.
   var $icji = jQuery.noConflict(true);
   var log = log4javascript.getDefaultLogger();
   log.setLevel(log4javascript.Level.ALL);
-  log4javascript.setEnabled(false);  // This turns off logging. If you want logging to run, comment this line.
+  log4javascript.setEnabled(false); // If you want JS logging to run, comment this line.
   log.trace("This is a debugging message from the log4javascript in-page page");
 </script>
 ```
@@ -109,20 +109,24 @@ to be able to make good on my promise of making their upgrade as seamless as
 possible. ...at least from the perspective of the code I've written for them. 
 I make no promises for other peoples code! :)
 
+###[Issues:](https://github.com/addoholdings/icji/issues) 
+When you find an issue or you have a problem with the code or you'd like to request 
+and enhancement to the code, you are more that welcome to use the 
+[issues tool](https://github.com/addoholdings/icji/issues) that GitHub provides.
+
+As a consultant I always assume that the code I write will eventually be modified, 
+updated, etc. If you are using this code and have questions, have 
+a more efficient way to do something, etc. and are feeling generous, let me 
+know your thoughts: chris.bennett@addoholdings.com or contact me through 
+my GitHub account:  https://github.com/addoholdings
 
 ###About Me:
 
 I've been a Cognos consultant since 1999. I've done just about everything I can
 think of related to Cognos BI and related technologies - DB Architecture, ETL, 
-Cognos Admin, Modeling, Development, web/web services development.  As a 
-consultant I always assume that the code I write will eventually be modified, 
-updated, etc. If you are using this code and have questions, find mistakes, have 
-a more efficient way to do something, etc. and are feeling generous, let me 
-know your thoughts: chris.bennett@addoholdings.com or contact me through 
-my github account:  https://github.com/addoholdings
+Cognos Admin, Modeling, Development, web/web services development.  
 
 Thanks!
-
 
 
 
