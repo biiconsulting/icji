@@ -8,8 +8,20 @@
  */
 
 /*JSLint*/
-/*global ICJI*/
-/*members action, addInput, addOnLoad, addParameterList, addStandardInput, all, appendChild, apply, body, buildMidTierForm, buildParaList, cgsloc, charAt, checked, cookies, cookie, count, createElement, cuCancelBtn, cuDivDisplay, cuFailMessage, cuFinishBtn, cuRunReport, cuSearch, cuSearchCookie, customFinishCode, debug, display, escape, events, fixDelim, func, get, getElementById, getElementsByName, getLocation, getParamValue, global, href, indexOf, initMidTierReport, initReport, innerHTML, isIE, join, length, location, method, objects, onload, params, paramsAll, parseDisplaySettings, preInitialize, prototype, push, reEsc, remove, removeChild, replace, rpts, search, set, setAttribute, slice, split, style, submit, substr, supplant, toGMTString, utils, value  */
+/*global ICJI, action, addInput, addOnLoad, addParameterList, addStandardInput, all, appendChild, apply, body,
+buildMidTierForm, buildParaList, cgsloc, charAt, checked, clean, splice, toInt, cookies, cookie, count, createElement,
+cuCancelBtn, cuDivDisplay, cuFailMessage, cuFinishBtn, cuRunReport, cuSearch, cuSearchCookie, customFinishCode, debug,
+display, escape, events, fixDelim, func, get, getElementById, getElementsByName, getLocation, getParamValue, global,
+href, indexOf, initMidTierReport, initReport, innerHTML, isIE, join, length, location, method, objects, onload, params,
+paramsAll, parseDisplaySettings, preInitialize, prototype, push, reEsc, remove, removeChild, replace, rpts, search,
+set, setAttribute, slice, split, style, submit, substr, supplant, toGMTString, utils, value, floor, unique, trim,
+cognos, Report, getReport, prompt, getGPM, gCognosViewer, m_sId, getCognosViewerId, getHtmlObject, getControlByName,
+getObject, isValidObject, oId, oOptlNames, n, oName, oSearchSelectObj, oParamName, getObjectInfo, date,
+_eq, _d6, getButtonForFInsert, F_Insert, checkData, insertListValue, log, removeListLabels, selectAll, clearValues,
+setCheckValue, _gc, _fF, setDateValue, selected, getFullYear, getMonth, getDate, isNaN, format, MONTH_NAMES_LONG,
+cognosDate, setFullYear, newDate, DAY, WEEK, YEAR, MONTH, setListValue, setObjectValue, ONE_DAY_MS, getTime, setMonth,
+setDate, add, math, MONTH_NAMES, twoDigit, y, yyyy, yy, substring, M, MM, MMM, d, dd, setFormat, _id_ */
+
 
 /**
  * I need a remove function for arrays so I just added it to the prototype.
@@ -23,51 +35,53 @@ Array.prototype.remove = function (f, t) {
 /**
  * Removes empty array elements
  */
-Array.prototype.clean = function() {
-  for (var i = 0; i < this.length; i++) {
-    if (this[i] === null || typeof(this[i]) === undefined || this[i] === '') {         
-      this.splice(i, 1);
-      i--;
+Array.prototype.clean = function () {
+    var i;
+    for (i = 0; i < this.length; i += 1) {
+        if (this[i] === null || typeof (this[i]) === "undefined" || this[i] === '') {
+            this.splice(i, 1);
+            i -= 1;
+        }
     }
-  }
-  return this;
+    return this;
 };
 /**
  * Convert all the values in an array to numbers.
  */
-Array.prototype.toInt = function() {
-  var f = Math.floor;
-  for (var i = 0; i < this.length; i++) {
-    this[i] = f(this[i]);
-  }
-  return this;
+Array.prototype.toInt = function () {
+    var i, f = Math.floor;
+    for (i = 0; i < this.length; i += 1) {
+        this[i] = f(this[i]);
+    }
+    return this;
 };
 /**
  * Removes duplicate array elements
  */
 Array.prototype.unique = function () {
-    var a = [];
-    l : for(var i = 0; i < this.length; i++) {
-        for(var j = 0; j < a.length; j++) {
+    var i, j, a = [];
+l : for (i = 0; i < this.length; i += 1) {
+        for (j = 0; j < a.length; j += 1) {
             if (a[j] === this[i]) {
                 this.splice(i, 1);
-                i--;
+                i -= 1;
                 continue l;
             }
         }
         a.push(this[i]);
     }
     return this;
-}
+};
 /**
  * Supplant function used from Crockfords "The Javascript 
  * Programming Language Part 3 of 4" - ~13min in
  */
 String.prototype.supplant = function (o) {
-    return this.replace(/{([^{}]*)}/g,
+    return this.replace(
+        /\{([^{}]*)\}/g,
         function (a, b) {
             var r = o[b];
-            return typeof r === "string" ? r : a;
+            return typeof r === 'string' || typeof r === 'number' ? r : a;
         }
     );
 };
@@ -75,15 +89,15 @@ String.prototype.supplant = function (o) {
  * Trim function for strings
  */
 String.prototype.trim = function () {
-  this.replace(/^\s+/,'');
-  this.replace(/\s+$/,'');
-  return this;
-}
+    this.replace(/^\s+/, '');
+    this.replace(/\s+$/, '');
+    return this;
+};
 
 
 /**
  * Cognos has made major changes to how objects are accessed on prompt pages
- * and there for I think it's neccessary to try to contain all the Cognos
+ * and there for I think it's necessary to try to contain all the Cognos
  * specific code in one area and have all other areas access it. This will limit
  * the amount of work needed to "fix" it the next time they decide it's fun
  * to blowup customer code.
@@ -120,22 +134,22 @@ ICJI = {
    * TIP: Use jsbeautifier.org to beautify the PRMTcompiled code. It'll make it 
    * a heck-of-a-lot easier to read.
    */
-    getGPM: function(w) { 
-      if (typeof w === "undefined" || !w) {
-        w = window;
-      }
-      return w.cognos.Report.getReport().prompt; //Return the object
+    getGPM: function (w) {
+        if (typeof w === "undefined" || !w) {
+            w = window;
+        }
+        return w.cognos.Report.getReport().prompt; //Return the object
     },
     getCognosViewerId: function () {
-      // try to find the G_PM suffix.
-      var s = '';
-      if (window.gCognosViewer !== undefined) {
-        s = '_THIS_'; // default incase the next doesn't return
-        if(window.gCognosViewer.m_sId !== undefined) {
-            s = window.gCognosViewer.m_sId;
+        // try to find the G_PM suffix.
+        var s = '';
+        if (window.gCognosViewer !== "undefined") {
+            s = '_THIS_'; // default incase the next doesn't return
+            if (window.gCognosViewer.m_sId !== "undefined") {
+                s = window.gCognosViewer.m_sId;
+            }
         }
-      }
-      return s; //Return the object
+        return s; //Return the object
     },
     /**
      * Simply returns the parameter and value of a Report Studio named HTML 
@@ -154,36 +168,36 @@ ICJI = {
      */
     getObject: function (f, w) {
         return ICJI.getGPM(w).getControlByName(f);
-    }, 
+    },
     /**
      *  
-     */  
-    getObjectInfo: {          
+     */
+    getObjectInfo: {
         oId: function (f, w) {
             if (ICJI.isValidObject(f, w)) {
-                return ICJI.getObject(f, w)._id_
+                return ICJI.getObject(f, w)._id_;
             } else {
                 return false;
             }
         },
-        oName: function(f, w) {
-            var s = '';   
+        oName: function (f, w) {
+            var s = '';
             if (ICJI.isValidObject(f, w)) {
-                switch (ICJI.getObject(f, w).n) {                
-                    case 'selectValue':
-                        s = 'PRMT_SV_' + this.oId(f, w);
-                        break;
-                    case 'textBox':
-                        s = 'PRMT_TB_' + this.oId(f, w);
-                        break;
-                    case 'selectDate':
-                        s = '_Date' + this.oId(f, w);
-                        break;
-                    case 'selectWithSearch':
-                        s = 'PRMT_SV_' + this.oId(f, w);
-                        break;
+                switch (ICJI.getObject(f, w).n) {
+                case 'selectValue':
+                    s = 'PRMT_SV_' + this.oId(f, w);
+                    break;
+                case 'textBox':
+                    s = 'PRMT_TB_' + this.oId(f, w);
+                    break;
+                case 'selectDate':
+                    s = '_Date' + this.oId(f, w);
+                    break;
+                case 'selectWithSearch':
+                    s = 'PRMT_SV_' + this.oId(f, w);
+                    break;
                 }
-            }        
+            }
             return s;
         },
         /**
@@ -195,66 +209,66 @@ ICJI = {
          * t - button type: Insert, Remove, etc
          */
         oOptlNames: function (f, t, w) {
-            var s = ''; 
+            var s = '';
             if (ICJI.isValidObject(f, w)) {
-                switch (t) {                
-                    case 'insert':
-                        s = 'PRMT_LIST_BUTTON_INSERT_' + this.oId(f, w);
-                        break;
-                    case 'remove':
-                        s = 'PRMT_LIST_BUTTON_REMOVE_' + this.oId(f, w);
-                        break;
-                    case 'select':
-                        s = 'PRMT_LIST_BOX_SELECT_' + this.oId(f, w);
-                        break;
-                    case 'date':
-                        s = 'txtDate' + this.oId(f, w);
-                        break;
-                    case 'lldeselect':
-                        s = 'PRMT_LIST_LINK_DESELECT_' + this.oId(f, w);
-                        break;
-                    case 'llselect':
-                        s = 'PRMT_LIST_LINK_SELECT_' + this.oId(f, w);
-                        break;
-                    case 'radioOptions':
-                        s = 'pOpt_' + this.oId(f, w);
-                        break;
-                    case 'sldeselect':  
-                        s = 'PRMT_SV_LINK_DESELECT_' + this.oId(f, w);
-                        break;
-                    case 'slselect':
-                        s = 'PRMT_SV_LINK_SELECT_' + this.oId(f, w);
-                        break;
-                    case 'inputSelectSearch':
-                        s = 'swsInput' + this.oId(f, w);
-                        break;
-                }
-            }               
-            return s;
-        },
-        oSearchSelectObj: function (f, t, w) {
-            var s = ''; 
-            if (ICJI.isValidObject(f, w)) {
-                switch (t) {                
-                    case 'sAny':
-                        s = 'swsStartAny' + this.oId(f, w);
-                        break;
-                    case 'sAll':
-                        s = 'swsStartAll' + this.oId(f, w);
-                        break;
-                    case 'cAny':
-                        s = 'swsMatchAny' + this.oId(f, w);
-                        break;
-                    case 'cAll':
-                        s = 'swsMatchAll' + this.oId(f, w);
-                        break;
-                    case 'case':
-                        s = 'swsCaseInsensitive' + this.oId(f, w);
-                        break;
+                switch (t) {
+                case 'insert':
+                    s = 'PRMT_LIST_BUTTON_INSERT_' + this.oId(f, w);
+                    break;
+                case 'remove':
+                    s = 'PRMT_LIST_BUTTON_REMOVE_' + this.oId(f, w);
+                    break;
+                case 'select':
+                    s = 'PRMT_LIST_BOX_SELECT_' + this.oId(f, w);
+                    break;
+                case 'date':
+                    s = 'txtDate' + this.oId(f, w);
+                    break;
+                case 'lldeselect':
+                    s = 'PRMT_LIST_LINK_DESELECT_' + this.oId(f, w);
+                    break;
+                case 'llselect':
+                    s = 'PRMT_LIST_LINK_SELECT_' + this.oId(f, w);
+                    break;
+                case 'radioOptions':
+                    s = 'pOpt_' + this.oId(f, w);
+                    break;
+                case 'sldeselect':
+                    s = 'PRMT_SV_LINK_DESELECT_' + this.oId(f, w);
+                    break;
+                case 'slselect':
+                    s = 'PRMT_SV_LINK_SELECT_' + this.oId(f, w);
+                    break;
+                case 'inputSelectSearch':
+                    s = 'swsInput' + this.oId(f, w);
+                    break;
                 }
             }
             return s;
-        },           
+        },
+        oSearchSelectObj: function (f, t, w) {
+            var s = '';
+            if (ICJI.isValidObject(f, w)) {
+                switch (t) {
+                case 'sAny':
+                    s = 'swsStartAny' + this.oId(f, w);
+                    break;
+                case 'sAll':
+                    s = 'swsStartAll' + this.oId(f, w);
+                    break;
+                case 'cAny':
+                    s = 'swsMatchAny' + this.oId(f, w);
+                    break;
+                case 'cAll':
+                    s = 'swsMatchAll' + this.oId(f, w);
+                    break;
+                case 'case':
+                    s = 'swsCaseInsensitive' + this.oId(f, w);
+                    break;
+                }
+            }
+            return s;
+        },
         oParamName: function (f, w) {
             if (ICJI.isValidObject(f, w)) {
                 return ICJI.getObject(f, w)['@parameter'];
@@ -263,7 +277,7 @@ ICJI = {
             }
         }
     },
-    getButtonForFInsert: function(f, w) {
+    getButtonForFInsert: function (f, w) {
         /** This gets the F_Insert *container*
          *    -- part of the insertListValue function            
          *
@@ -276,11 +290,10 @@ ICJI = {
          *  _d6 - contains the C_Choices object - "prmt_core.js" search 
          *          for something like "this._d6 = new C_Choices(this);"
          */
-        
         if (ICJI.getGPM(w).getControlByName(f)._eq) {
-          return ICJI.getObject(f, w)._eq;
+            return ICJI.getObject(f, w)._eq;
         } else {
-          return ICJI.getObject(f, w)._d6;
+            return ICJI.getObject(f, w)._d6;
         }
     },
     /**
@@ -291,7 +304,7 @@ ICJI = {
      *  s - boolean; Select and Search prompts don't have a textbox to populate
      *      so there's no need try to set the value. 
      */
-    insertListValue: function (f, v, s) {            
+    insertListValue: function (f, v, s) {
         /** set the current value of the textbox
          *
          *  F_Insert - inserts the record from _hg (which is why you can't just 
@@ -307,7 +320,7 @@ ICJI = {
             // F_Insert calls checkData at the end of the function so there is 
             //   no need to run the setObjectValue function.
         } else {
-            this.getObject(f).checkData;
+            this.getObject(f).checkData();
             // if o is null then it's not a multiselect prompt 
             //  and only checkData needs to be run.
         }
@@ -346,7 +359,7 @@ ICJI = {
         if (t) {
             this.getObject(f).selectAll();
         } else {
-            this.getObject(f).clearValues();                
+            this.getObject(f).clearValues();
         }
     },
     /**
@@ -374,14 +387,12 @@ ICJI = {
          * you'll be looking for a single-line function that runs 
          * this._gc.setValue function where the "_hx" is also a compiled name.
          */
-        
         var o = ICJI.getObject(f);
-        d = (d === '' || typeof(d) === 'undefined') ? '' : getFormatDate(d, 'YMD');
-        
-        if (typeof o._gc !== 'undefined') {
-          o._gc(d);
+        d = (d === '' || typeof d === "undefined") ? '' : getFormatDate(d, 'YMD');
+        if (typeof o._gc !== "undefined") {
+            o._gc(d);
         } else {
-          o._fF(d);
+            o._fF(d);
         }
     },
     /**
@@ -391,14 +402,14 @@ ICJI = {
      *  v - value to be searched for. it MUST be the "value" not the text
      */
     setListValue: function (f, v) {
-        var o = document.getElementById(ICJI.getObjectInfo.oName(f));
-        for (var i = 0; i < o.length; i++) {
+        var i, o = document.getElementById(ICJI.getObjectInfo.oName(f));
+        for (i = 0; i < o.length; i += 1) {
             if (o[i].value === v) {
                 o[i].selected = true;
                 i += o.length;
             }
         }
-    },        
+    },
     /**
      * Simply runs the checkData() function on any object, but you never know 
      *  when they'll change it...
@@ -406,46 +417,40 @@ ICJI = {
     setObjectValue: function (f, w) {
         return ICJI.getObject(f, w).checkData();
     },
-    
     /**
      * utils is another container for simple functions
      */
     utils: {
-      
         date: {
             // Return a date for Cognos to use in a date prompt
             // b - boolean - if true, return current date
             // y - year - 4 digit
             // m - month number - Remember month must be 1 less than the actual
-            //       month number. i.e. Januaruy = 0
+            //       month number. i.e. January = 0
             // d - day
-            cognosDate: function(b, y, m, d) {
-                
+            cognosDate: function (b, y, m, d) {
                 if (b) {
-                  var n = new Date();
-                  y = n.getFullYear();
-                  m = n.getMonth();
-                  d = n.getDate();
+                    var n = new Date();
+                    y = n.getFullYear();
+                    m = n.getMonth();
+                    d = n.getDate();
                 }
-                
                 if (y.length < 4) {
-                  if (y < 50) {
-                    y = "" + ((+y) + 1900);
-                  } else {
-                    y = "" + ((+y) + 2000);
-                  }
+                    if (y < 50) {
+                        y = ((+y) + 1900).toString();
+                    } else {
+                        y = ((+y) + 2000).toString();
+                    }
                 }
-                
                 if (y.isNaN || m.isNaN || d.isNaN) {
-                  return false;
+                    return false;
                 } else {
-                  return new Date(this.format.MONTH_NAMES_LONG[m] + ' ' + d + ', ' + y)
+                    return new Date(this.format.MONTH_NAMES_LONG[m] + ' ' + d + ', ' + y);
                 }
-                
             },
-            newDate: function(y, m, d) {
+            newDate: function (y, m, d) {
                 var n = new Date();
-                n.setFullYear(y*1, (m*1)-1, d*1);
+                n.setFullYear(y * 1, (m * 1) - 1, d * 1);
                 return n;
             },
             math: {
@@ -461,8 +466,8 @@ ICJI = {
                     var nd = new Date(d.getTime());
                     switch (f) {
                     case this.MONTH:
-                        var m = d.getMonth() + a;
-                        var y = 0;                    
+                        var m = d.getMonth() + a,
+                            y = 0;
                         if (m < 0) {
                             while (m < 0) {
                                 m += 12;
@@ -473,7 +478,7 @@ ICJI = {
                                 m -= 12;
                                 y += 1;
                             }
-                        }                    
+                        }
                         nd.setMonth(m);
                         nd.setFullYear(d.getFullYear() + y);
                         break;
@@ -491,14 +496,14 @@ ICJI = {
                 }
             },
             format: {
-                MONTH_NAMES: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+                MONTH_NAMES: ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
                     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                MONTH_NAMES_LONG: ["January", "February", "March", "April", "May", "June", 
+                MONTH_NAMES_LONG: ["January", "February", "March", "April", "May", "June",
                     "July", "August", "September", "October", "November", "December"],
                 twoDigit: function (n) {
                     return (n < 0 || n > 9 ? "" : "0") + n;
                 },
-                setFormat: function (dte, frm) {    
+                setFormat: function (dte, frm) {
                     /**
                      * Matt Kruse's code with modifications
                      * http://www.mattkruse.com/javascript/date/source.html
@@ -511,11 +516,15 @@ ICJI = {
                         i = 0,
                         d = fd.getDate(),
                         M = fd.getMonth() + 1,
-                        y = fd.getFullYear() + "",
-                        YYYY, YY, MMM, MM, dd;
+                        y = (fd.getFullYear()).toString(),
+                        YYYY,
+                        YY,
+                        MMM,
+                        MM,
+                        dd,
+                        v = [];
 
-                    var v = [];
-                    v.y = "" + y;
+                    v.y = y.toString();
                     v.yyyy = y;
                     v.yy = y.substring(2, 4);
                     v.M = M;
@@ -567,11 +576,11 @@ ICJI = {
                         t = "";                                             ///2
                         c = frm.charAt(i);                                  ///3
                         while ((frm.charAt(i) === c) && (i < frm.length)) { ///4
-                            t += frm.charAt(i++);                           ///5
-                        }                                                  
-                        if (typeof v[t] !== 'undefined') {                  ///6
+                            t += frm.charAt(i += 1);                        ///5
+                        }
+                        if (typeof v[t] !== "undefined") {                  ///6
                             r = r + v[t];                                   ///7
-                        } else {                                           
+                        } else {
                             r = r + t;                                      ///8
                         }
                     }

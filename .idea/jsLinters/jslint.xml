@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JSLintConfiguration" json="true">
+    <option browser="true" />
+    <option devel="true" />
+    <option indent="4" />
+    <option maxerr="200" />
+    <option maxlen="120" />
+    <option nomen="true" />
+    <option sloppy="true" />
+    <option todo="true" />
+    <option windows="true" />
+  </component>
+</project>
+
