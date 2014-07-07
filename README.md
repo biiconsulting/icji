@@ -1,7 +1,7 @@
 ﻿#ICJI - IBM Cognos JavaScript Interface
 
 
-Copyright (c) 2008 - 2013 Chris Bennett 
+Copyright (c) 2008 - 2014 Chris Bennett 
 
 This work is licensed under a Creative Commons 
   Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
