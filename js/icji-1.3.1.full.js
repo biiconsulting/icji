@@ -1,12 +1,10 @@
 /*! ICJI - IBM Cognos JavaScript Interface
- *  Version 1.3.3
+ *  Version 1.3.1
  *  
- *  Copyright (c) 2014 Chris Bennett
+ *  Copyright (c) 2012 Chris Bennett 
  *  This work is licensed under a Creative Commons 
  *    Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
  *  http://www.creativecommons.org/licenses/by-nc-sa/3.0/
- *
- *  Compressed with UglifyJS @ http://skalman.github.io/UglifyJS-online/
  */
 
 /*JSLint*/
@@ -280,17 +278,17 @@ ICJI = {
          *  This looks like it's coming from prmt_core.js file now.
          *  I left the PRMTCompiled.js in there just in case though...
          *
-         *  _ev - contains the C_Choices object - "PRMTCompiled.js" search
-         *          for something like "this._ev = new C_Choices(this);"
+         *  _es - contains the C_Choices object - "PRMTCompiled.js" search
+         *          for something like "this._es = new C_Choices(this);"
          *
-         *  _eb - contains the C_Choices object - "prmt_core.js" search
-         *          for something like "this._eb = new C_Choices(this);"
+         *  _d8 - contains the C_Choices object - "prmt_core.js" search
+         *          for something like "this._d8 = new C_Choices(this);"
          *
          *  You should be about to find F_Insert() call with the compiled name:
-         *    this._es.F_Insert();  or  this._eb.F_Insert();
+         *    this._es.F_Insert();  or  this._d8.F_Insert();
          *
          */
-        return ICJI.getGPM(w).getControlByName(f)._ev || ICJI.getObject(f, w)._eb;
+        return ICJI.getGPM(w).getControlByName(f)._es || ICJI.getObject(f, w)._d8;
     },
     /**
      *  function to add select options
@@ -368,13 +366,13 @@ ICJI = {
          *  This looks like it's coming from prmt_core.js file now.
          *  I left the PRMTCompiled.js in there just in case though...
          *
-         * _gk is a compiled function that begins in the PRMTcompiled.js
+         * _gf is a compiled function that begins in the PRMTcompiled.js
          *    - search for cognos.Prompt.Control.Date - clearValues function -
-         *      this._gk(("" + new Date())); - whatever "_gk" is set to...
+         *      this._gf(("" + new Date())); - whatever "_gc" is set to...
          *
-         * _fN is a compiled function that begins in the prmt_core.js
+         * _fI is a compiled function that begins in the prmt_core.js
          *    - search for cognos.Prompt.Control.Date - clearValues function -
-         *      this._fN(("" + new Date())); - whatever "_fN" is set to...
+         *      this._fI(("" + new Date())); - whatever "_fI" is set to...
          *
          * This'll definitely break during the next upgrade. But basically 
          * you'll be looking for a single-line function that runs 
@@ -382,10 +380,10 @@ ICJI = {
          */
         var o = ICJI.getObject(f);
         d = (d === '' || d === undefined) ? '' : getFormatDate(d, 'YMD');
-        if (o._gk !== undefined) {
-            o._gk(d);
+        if (o._gf !== undefined) {
+            o._gf(d);
         } else {
-            o._fN(d);
+            o._fI(d);
         }
     },
     /**
