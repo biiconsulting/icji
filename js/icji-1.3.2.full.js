@@ -174,7 +174,7 @@ ICJI = {
      */
     getObjectInfo: {
         oId: function (f, w) {
-            return ICJI.isValidObject(f, w) ? ICJI.isValidObject(f, w)._id_ : false;
+            return ICJI.isValidObject(f, w) ? ICJI.getObject(f, w)._id_ : false;
         },
         oName: function (f, w) {
             var s = '';
