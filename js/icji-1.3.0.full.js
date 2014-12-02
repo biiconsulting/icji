@@ -5,12 +5,10 @@
  *  This work is licensed under a Creative Commons 
  *    Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
  *  http://www.creativecommons.org/licenses/by-nc-sa/3.0/
- *
- *  Compressed with UglifyJS @ http://skalman.github.io/UglifyJS-online/
  */
 
 /*JSLint*/
-/*global ICJI, action, addInput, addOnLoad, addParameterList, addStandardInput, all, appendChild, apply, body,
+/*global $icji, ICJI, action, addInput, addOnLoad, addParameterList, addStandardInput, all, appendChild, apply, body,
 buildMidTierForm, buildParaList, cgsloc, charAt, checked, clean, splice, toInt, cookies, cookie, count, createElement,
 cuCancelBtn, cuDivDisplay, cuFailMessage, cuFinishBtn, cuRunReport, cuSearch, cuSearchCookie, customFinishCode, debug,
 display, escape, events, fixDelim, func, get, getElementById, getElementsByName, getLocation, getParamValue, global,

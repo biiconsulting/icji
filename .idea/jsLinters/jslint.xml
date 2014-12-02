@@ -8,9 +8,9 @@
     <option maxerr="200" />
     <option maxlen="120" />
     <option nomen="true" />
+    <option plusplus="true" />
     <option regexp="true" />
     <option sloppy="true" />
     <option todo="true" />
   </component>
 </project>
-

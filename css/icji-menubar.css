@@ -1,0 +1,63 @@
+
+
+#icji-menubar {
+    font-family: "Arial", san-serif;
+    font-size: .8em;
+    height: 25px;
+}
+#icji-menubar, #icji-menubar ul {
+    background-color: #ddd;
+}
+#icji-menubar > li {
+    border-right: solid #aaa 1px;
+}
+#icji-menubar ul li {
+    border-bottom: solid #aaa 1px;
+}
+#icji-menubar ul {
+    border-left: solid #aaa 1px;
+}
+#icji-menubar li {
+    float: left;
+    position: relative;
+}
+#icji-menubar li:hover {
+    background-color: #7F95C9;
+}
+#icji-menubar li:hover > ul {
+    display: block;
+    visibility:visible;
+}
+#icji-menubar li:active {
+    background-color: #f4791f;
+}
+#icji-menubar li a {
+    padding: 0px 12px 0px 12px;
+    line-height: 25px;
+    color: #142F6D;
+    text-decoration: none;
+}
+#icji-menubar li, #icji-menubar li a{
+    display: block;
+}
+#icji-menubar ul, #icji-menubar ul li {
+    width:170px;
+}
+
+/* Sub menus - first level */
+#icji-menubar ul {
+    position: absolute;
+    top: 25px;
+    z-index: 999;
+}
+/* Second-level and further menus */
+.icji-menubar-hide {
+    display: none;
+    visibility: hidden;
+}
+.icji-menubar-sub-gt1  {
+    left:170px;
+    margin-top: -25px;
+    top: 0px;
+    z-index: 1000;
+}
