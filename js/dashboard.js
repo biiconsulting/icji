@@ -120,7 +120,7 @@ ICJI.iframe = {
             this.h = this.e.offsetTop;
             if (this.l < 40) {
                 this.t = setTimeout(function () {
-                    ICJI.utils.frame.setHeight();
+                    ICJI.iframe.setHeight();
                 }, 100);
             }
         }
@@ -148,9 +148,15 @@ ICJI.prompt = {
         if (that.is(':hidden')) {
             that.show().parent().width("225px");
             o.innerHTML = "&nbsp;&lt;&lt;&nbsp;";
+            $icji(o)
+                .removeClass("icji-prompt-button-open")
+                .addClass("icji-prompt-button-close");
         } else {
             that.hide().parent().width("0px");
             o.innerHTML = "&nbsp;&gt;&gt;&nbsp;";
+            $icji(o)
+                .removeClass("icji-prompt-button-close")
+                .addClass("icji-prompt-button-open");
         }
     },
     /**
@@ -381,7 +387,7 @@ function parseMenuData(s) {
     var menuMainId = 'vbUL_m{pL1}s{pL2}'
 
     var menuItem =
-        '<li><a href="javascript:ICJI.utils.frame.setSource(\'{pMSrc}\', \'{pMRnm}\', \'{pMItm}\' + \' > \' + \'{pMRpt}\');">' +
+        '<li><a href="javascript:ICJI.iframe.setSource(\'{pMSrc}\', \'{pMRnm}\', \'{pMItm}\' + \' > \' + \'{pMRpt}\');">' +
         '{pMRpt}</a></li>';
 
     var menuItemGray = '<li><a style="color: BBBBBB;">{pMRpt}</a></li>';

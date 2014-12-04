@@ -1,7 +1,9 @@
 .icji-prompt-button {
-    cursor: pointer;
     background-image: url(./images/icons-36-black.png);
+    cursor: pointer;
+    display: block;
     height: 36px;
+    text-indent:-9999px;
     width: 36px;
 }
 .icji-prompt-button-open {
