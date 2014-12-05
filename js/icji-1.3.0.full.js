@@ -113,6 +113,17 @@ if (window.ICJI === undefined || !ICJI) {
 }
 
 ICJI = {
+    type: {
+        CHECKBOXES: "CHECKBOXES",
+        SELECTDATE: "SELECTDATE",
+        SELECTSINGLE: "SELECTSINGLE",
+        SELECTMULTI: "SELECTMULTI",
+        TEXTBOX: "TEXTBOX"
+    },
+    /**
+     * prefix that Cognos applies to parameter names.
+     */
+    PARAMPREFIX: "p_",
   /**
    * This returns the "G_PM..." object within the Cognos object structure. 
    *
@@ -168,6 +179,19 @@ ICJI = {
      */
     getObject: function (f, w) {
         return ICJI.getGPM(w).getControlByName(f);
+    },
+    /**
+     * Returns a list of all parameters in the current report
+     * "w" options and is the window to search if using frames
+     */
+    getAllParameterNames: function (w) {
+        var p = ICJI.getGPM(w).getControls(),
+            n = [],
+            i;
+        for (i = 0; i < p.length; i++) {
+            n[i] = p[i]["@name"];
+        }
+        return n;
     },
     /**
      *  
@@ -267,6 +291,42 @@ ICJI = {
         },
         oParamName: function (f, w) {
             return ICJI.isValidObject(f, w) ? ICJI.getObject(f, w)['@parameter'] : false;
+        },
+        /**
+         * Returns the type of parameter
+         * @param f
+         * @param w
+         * @returns {string}
+         */
+        oType: function (f, w) {
+            var s = '',
+                o;
+            if (ICJI.isValidObject(f, w)) {
+                o = ICJI.getObject(f, w);
+                switch (o.n) {
+                case 'selectValue':
+                    if (o.selectUI === 'dropdown') {
+                        s = ICJI.type.SELECTSINGLE;
+                    }
+                    if (o.selectUI === 'listBox') {
+                        s = ICJI.type.SELECTMULTI;
+                    }
+                    if (o.selectUI === 'checkboxGroup') {
+                        s = ICJI.type.CHECKBOXES;
+                    }
+                    break;
+                case 'textBox':
+                    s = ICJI.type.TEXTBOX;
+                    break;
+                case 'selectDate':
+                    s = ICJI.type.SELECTDATE;
+                    break;
+                case 'selectWithSearch':
+                    s = ICJI.type.SELECTMULTI;
+                    break;
+                }
+            }
+            return s;
         }
     },
     getButtonForFInsert: function (f, w) {

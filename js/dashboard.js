@@ -140,6 +140,7 @@ ICJI.iframe = {
  * Container for prompt related functions
  */
 ICJI.prompt = {
+    allPrompts: [],
     /**
      * hides the global prompt option window
      */
@@ -157,6 +158,83 @@ ICJI.prompt = {
             $icji(o)
                 .removeClass("icji-prompt-button-close")
                 .addClass("icji-prompt-button-open");
+        }
+    },
+    promptsArray: [],
+    /**
+     * returns the url api string representation of the prompts options, that
+     * have been selected in the global prompts window, so they can be applied
+     * to the currently loaded report or the report that will be clicked in the
+     * menu list.
+     */
+    getPromptString: function () {
+        var p,
+            i;
+        if (this.allPrompts.length === 0) {
+            this.setAllPrompts();
+        }
+        this.promptsArray = [];
+        for (i = 0; i < this.allPrompts.length; i++) {
+            p = this.allPrompts[i];
+            if (p.type === ICJI.type.SELECTSINGLE) {
+                this.test.selectSingle(p);
+            } else if (p.type === ICJI.type.SELECTMULTI) {
+                this.test.selectMulti(p);
+            } else if (p.type === ICJI.type.CHECKBOXES) {
+                this.test.checkBoxes(p);
+            } else if (p.type === ICJI.type.TEXTBOX) {
+                /* TODO: Define this section */
+            } else if (p.type === ICJI.type.SELECTDATE) {
+                /* TODO: Define this section */
+            }
+        }
+        return this.promptsArray.length > 0 ? "&" + this.promptsArray.join("&") : "";
+    },
+    test: {
+        pn: function (p) { return ICJI.PARAMPREFIX + p.name + "="; },
+        eC: [],
+        eL: 0,
+        v: "",
+        pL: 0,
+        pushToPA: function (o) {
+            ICJI.prompt.promptsArray[ICJI.prompt.promptsArray.length] = o;
+        },
+        pA: this.promptsArray,
+        applyEC: function () {
+            if (this.eC.length > 0) {
+                this.pushToPA(this.eC.join("&"));
+            }
+        },
+        selectSingle: function (p) {
+            this.v = document.getElementById(p.id);
+            if (this.v !== undefined &&
+                    this.v.value !== undefined &&
+                    this.v.value !== "") {
+                this.pushToPA(this.pn(p) + this.v.value);
+            }
+        },
+        selectMulti: function (p) {
+            var j;
+            this.v = document.getElementById(p.id);
+            this.eC = [];
+            for (j = 0; j < this.v.length; j++) {
+                if (this.v.options[j].selected) {
+                    this.eC[this.eC.length] =
+                        this.pn(p) + this.v.options[j].value;
+                }
+            }
+            this.applyEC();
+        },
+        checkBoxes: function (p) {
+            var j,
+                o = $icji("input[name='" +
+                        ICJI.getObjectInfo.oOptlNames(p.obj, "radioOptions") +
+                        "']:checked");
+            this.eC = [];
+            for (j = 0; j < o.length; j++) {
+                this.eC[this.eC.length] = this.pn(p) + o[j].value;
+            }
+            this.applyEC();
         }
     },
     /**
@@ -333,6 +411,24 @@ ICJI.prompt = {
             a = a.getAttribute("sortBy");
             b = b.getAttribute("sortBy");
             return a > b ? 1 : (a < b ? -1 : 0);
+        }
+    },
+    /**
+     * Search for all global prompts and store their info in the allPrompts
+     * parameter for use by other functions
+     */
+    setAllPrompts: function () {
+        var params = ICJI.getAllParameterNames(),
+            i;
+        this.allPrompts = [];
+        this.allPrompts.length = params.length;
+        for (i = 0; i < params.length; i++) {
+            this.allPrompts[i] = {
+                obj: params[i],
+                id: ICJI.getObjectInfo.oName(params[i]),
+                name: ICJI.getObjectInfo.oParamName(params[i]),
+                type: ICJI.getObjectInfo.oType(params[i])
+            };
         }
     }
 };
