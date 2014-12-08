@@ -82,6 +82,12 @@ ICJI.iframe = {
     e: '',
     h: 350,
     id: '',
+    currenReport: {
+        location: "",
+        name: "",
+        breadcrumb: "",
+        useGlobalPrompts: true
+    },
     breadcrumbs: function (t) {
         $icji('#icji-frame-breadcrumbs').html('<span>' + t + '</span>');
     },
@@ -125,13 +131,21 @@ ICJI.iframe = {
             }
         }
     },
-    setSource: function (p, n, b) {
+    setSource: function (p, n, b, g) {
         this.loading().show();
-        var loc = ICJI.urlApi.defaultFrameUri(p, n);
-        document.getElementById(this.id).src = loc;
+        var cr = this.currenReport,
+            gp = "";
+        cr.location = ICJI.urlApi.defaultFrameUri(p, n);
+        cr.name = n;
+        cr.breadcrumb = b;
+        cr.useGlobalPrompts = g;
         this.breadcrumbs(b);
-        log.info('Set ' + this.id + ' Source to: ' + loc +
-            '\n    path: ' + p + '\n    name: ' + n);
+        if (cr.useGlobalPrompts) {
+            gp = ICJI.prompt.getPromptString();
+        }
+        document.getElementById(this.id).src = cr.location + gp;
+        log.info('Set ' + this.id + ' Source to: ' + cr.location + gp +
+            '\n    path: ' + cr.breadcrumb + '\n    name: ' + cr.name);
     }
 };
 
@@ -141,6 +155,14 @@ ICJI.iframe = {
  */
 ICJI.prompt = {
     allPrompts: [],
+    applyGlobalPrompts: function () {
+        ICJI.iframe.setSource(
+            ICJI.iframe.currenReport.location,
+            ICJI.iframe.currenReport.name,
+            ICJI.iframe.currenReport.breadcrumb,
+            ICJI.iframe.currenReport.useGlobalPrompts
+        );
+    },
     /**
      * hides the global prompt option window
      */
@@ -483,7 +505,7 @@ function parseMenuData(s) {
     var menuMainId = 'vbUL_m{pL1}s{pL2}'
 
     var menuItem =
-        '<li><a href="javascript:ICJI.iframe.setSource(\'{pMSrc}\', \'{pMRnm}\', \'{pMItm}\' + \' > \' + \'{pMRpt}\');">' +
+        '<li><a href="javascript:ICJI.iframe.setSource(\'{pMSrc}\', \'{pMRnm}\', \'{pMItm}\' + \' > \' + \'{pMRpt}\', true);">' +
         '{pMRpt}</a></li>';
 
     var menuItemGray = '<li><a style="color: BBBBBB;">{pMRpt}</a></li>';
