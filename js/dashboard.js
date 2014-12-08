@@ -91,8 +91,27 @@ ICJI.iframe = {
     breadcrumbs: function (t) {
         $icji('#icji-frame-breadcrumbs').html('<span>' + t + '</span>');
     },
-    build: function () {
-
+    /**
+     * Function to initialize the iFrame
+     * @param o = takes in a JSON object with the following objects:
+     *      id - id of the iframe DOM object
+     *      initialReport - container for the report that will initial be run
+     *          location - cognos path of the report
+     *          name - Cognos name of the report
+     *          breadcrumb - path of the report in the dropdown menu
+     *          useGlobalPrompts - boolean indicating if the func should get
+     *                  the report global prompts
+     */
+    build: function (o) {
+        this.id = o.id;
+        if (o.initialReport !== undefined) {
+            this.setSource(
+                o.initialReport.location,
+                o.initialReport.name,
+                o.initialReport.breadcrumb,
+                o.initialReport.useGlobalPrompts
+            );
+        }
     },
     clearLoop: function () {
         clearTimeout(this.t);
