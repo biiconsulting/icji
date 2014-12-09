@@ -224,12 +224,13 @@ ICJI.prompt = {
             } else if (p.type === ICJI.type.CHECKBOXES) {
                 this.test.checkBoxes(p);
             } else if (p.type === ICJI.type.TEXTBOX) {
-                /* TODO: Define this section */
+                /** TODO: Define this section */
             } else if (p.type === ICJI.type.SELECTDATE) {
-                /* TODO: Define this section */
+                /** TODO: Define this section */
             }
         }
-        return this.promptsArray.length > 0 ? "&" + this.promptsArray.join("&") : "";
+        return this.promptsArray.length > 0 ?
+                "&" + this.promptsArray.join("&") : "";
     },
     test: {
         pn: function (p) { return ICJI.PARAMPREFIX + p.name + "="; },
@@ -429,10 +430,12 @@ ICJI.prompt = {
         },
         setOnChange: function () {
             $icji.each(this.hierParams, function (i, v) {
-                $icji("#" + ICJI.getObjectInfo.oName(this.prefixPrmpt + v))
+                $icji("#" + ICJI.getObjectInfo.oName(
+                    ICJI.prompt.m2m.prefixPrmpt + v
+                ))
                     .attr("icji-param-name", v)
                     .change(function () {
-                        this.promptChange(this);
+                        ICJI.prompt.m2m.promptChange(this);
                     });
             });
         },

@@ -2,26 +2,30 @@
 /*global ICJI, $icji, log4javascript
  */
 
-
 var log = log4javascript.getDefaultLogger();
 log.setLevel(log4javascript.Level.ALL);
 //log4javascript.setEnabled(false); // If you want JS logging to run, comment this line.
 log.trace("This is a debugging message from the log4javascript in-page page");
 
-
-ICJI.uiClean.portlet();         // Hide Headers
-ICJI.prompt.m2m.build({         // Setup Global Prompt objects
-    "promptPrefix": "po_",
-    "promptBlockPrefix": "pb_",
-    "firstStep": "p_country"
+ICJI.uiClean.portlet();             // Hide Headers
+ICJI.prompt.m2m.build({             // Setup Global Prompt objects
+    "promptPrefix" : "po_",
+    "promptBlockPrefix" : "pb_",
+    "firstStep" : "p_country"
 });
-ICJI.iframe.build({             // Initial frame load
-    "id": "icji-iframeContent"
+ICJI.iframe.build({                 // Initial frame load
+    "id" : "icji-iframeContent",
+    "initialReport" : {
+        "location" : "/content/folder[@name='Development']/folder[@name='Chris']/folder[@name='SBP Prototype']/report[@name='SLS001 - Sales Volume/Revenue Trend']",
+        "name" : "SLS001 - Sales Volume/Revenue Trend",
+        "breadcrumb" : "Sales > Sales Trend",
+        "useGlobalPrompts" : true
+    }
 });
 
 
 
-    /**
+/**
      * Build menu in table in preparation for running the Vista Buttons stuff
      */
 parseMenuData();
