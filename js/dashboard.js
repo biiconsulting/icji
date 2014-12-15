@@ -463,13 +463,17 @@ ICJI.prompt = {
      * @param n - name of the DIV that contains the button
      */
     overrideButtonClick: function (n) {
-        ICJI.getHtmlObject("div",
-                ICJI.prompt.m2m.prefixBlock + n)
-            .find(":button")[0]
-            .off("click")
-            .click(function () {
-                ICJI.prompt.applyGlobalPrompts();
-            });
+        var o = ICJI.getHtmlObject("div",
+            ICJI.prompt.m2m.prefixBlock + n).find(":button");
+        log.trace("overrideButtonClick: name - " + n);
+        log.trace("                     length - " + o.length);
+        log.trace("                     selector - " + o.selector);
+        if (o.length !== 0) {
+            o.attr("onclick", "")
+                .click(function () {
+                    ICJI.prompt.applyGlobalPrompts();
+                });
+        }
     },
     /**
      * Search for all global prompts and store their info in the allPrompts
