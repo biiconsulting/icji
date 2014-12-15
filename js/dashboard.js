@@ -179,7 +179,7 @@ ICJI.prompt = {
             ICJI.iframe.currenReport.location,
             ICJI.iframe.currenReport.name,
             ICJI.iframe.currenReport.breadcrumb,
-            ICJI.iframe.currenReport.useGlobalPrompts
+            true
         );
     },
     /**
@@ -456,6 +456,20 @@ ICJI.prompt = {
             b = b.getAttribute("sortBy");
             return a > b ? 1 : (a < b ? -1 : 0);
         }
+    },
+    /**
+     * Clears the onclick function of the button and then adds the
+     * Apply Global Prompts function to the button.
+     * @param n - name of the DIV that contains the button
+     */
+    overrideButtonClick: function (n) {
+        ICJI.getHtmlObject("div",
+                ICJI.prompt.m2m.prefixBlock + n)
+            .find(":button")[0]
+            .off("click")
+            .click(function () {
+                ICJI.prompt.applyGlobalPrompts();
+            });
     },
     /**
      * Search for all global prompts and store their info in the allPrompts

@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b02b334e-a4f4-4c28-adbf-4a0543549418" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/chris_bennett.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/chris_bennett.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/dashboard.js" afterPath="$PROJECT_DIR$/js/dashboard.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/working_copy.js" afterPath="$PROJECT_DIR$/js/working_copy.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -29,27 +28,27 @@
     <favorites_list name="icji" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.341412">
+    <splitter split-orientation="horizontal" split-proportion="0.3377239">
       <split-first>
         <leaf>
-          <file leaf-file-name="icji-1.3.0.full.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="icji-1.3.0.full.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/icji-1.3.0.full.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="4539" max-vertical-offset="10846">
-                  <caret line="291" column="8" selection-start-line="291" selection-start-column="8" selection-end-line="291" selection-end-column="8" />
+                <state vertical-scroll-proportion="-0.17626728" vertical-offset="2652" max-vertical-offset="10846">
+                  <caret line="154" column="39" selection-start-line="154" selection-start-column="39" selection-end-line="154" selection-end-column="39" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="dashboard.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="dashboard.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/dashboard.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.25490198" vertical-offset="6137" max-vertical-offset="10574">
+                <state vertical-scroll-proportion="0.0" vertical-offset="7412" max-vertical-offset="10812">
                   <caret line="374" column="75" selection-start-line="374" selection-start-column="75" selection-end-line="374" selection-end-column="75" />
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
-                    <marker date="1418142940408" expanded="true" signature="17958:17972" placeholder="..." />
+                    <marker date="1418669084978" expanded="true" signature="18402:18416" placeholder="..." />
                   </folding>
                 </state>
               </provider>
@@ -58,17 +57,20 @@
         </leaf>
       </split-first>
       <split-second>
-        <splitter split-orientation="horizontal" split-proportion="0.47063556">
+        <splitter split-orientation="horizontal" split-proportion="0.5144">
           <split-first>
             <leaf>
-              <file leaf-file-name="dashboard.js" pinned="false" current-in-tab="false">
+              <file leaf-file-name="dashboard.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/js/dashboard.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.0" vertical-offset="2703" max-vertical-offset="10574">
-                      <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
+                    <state vertical-scroll-proportion="0.15119047" vertical-offset="3987" max-vertical-offset="7242">
+                      <caret line="280" column="6" selection-start-line="280" selection-start-column="6" selection-end-line="280" selection-end-column="6" />
                       <folding>
                         <element signature="n#!!doc" expanded="true" />
-                        <marker date="1418142940408" expanded="true" signature="17958:17972" placeholder="..." />
+                        <element signature="e#5698#6277#0" expanded="false" />
+                        <element signature="e#6605#7486#0" expanded="false" />
+                        <element signature="e#9252#15790#0" expanded="false" />
+                        <marker date="1418669084978" expanded="true" signature="18402:18416" placeholder="..." />
                       </folding>
                     </state>
                   </provider>
@@ -77,16 +79,18 @@
               <file leaf-file-name="working_copy.js" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/js/working_copy.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="1615">
-                      <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+                    <state vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="1564">
+                      <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
                       <folding>
                         <element signature="n#!!doc" expanded="true" />
+                        <marker date="1418668915532" expanded="true" signature="1010:1024" placeholder="/** Build menu in table in preparation for running the Vista Buttons stuff ...*/" />
+                        <marker date="1418668915532" expanded="true" signature="1465:1514" placeholder="/** Initial frame load ...*/" />
                       </folding>
                     </state>
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="icji-menubar.css" pinned="false" current-in-tab="true">
+              <file leaf-file-name="icji-menubar.css" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/css/icji-menubar.css">
                   <provider selected="true" editor-type-id="text-editor">
                     <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1156">
@@ -99,7 +103,7 @@
               <file leaf-file-name="icji-iframe.css" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/css/icji-iframe.css">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="748">
+                    <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
                       <caret line="29" column="15" selection-start-line="29" selection-start-column="15" selection-end-line="29" selection-end-column="15" />
                       <folding />
                     </state>
@@ -133,8 +137,8 @@
               <file leaf-file-name="working_copy.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/js/working_copy.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1615">
-                      <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+                    <state vertical-scroll-proportion="0.45046082" vertical-offset="0" max-vertical-offset="1564">
+                      <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
                       <folding>
                         <element signature="n#!!doc" expanded="true" />
                       </folding>
@@ -228,7 +232,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -239,7 +243,12 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane />
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="298" />
@@ -380,12 +389,12 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38063806" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.74339205" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.74339205" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45544556" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45544556" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -699,7 +708,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="731" max-vertical-offset="15946">
           <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -739,24 +747,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/icji-iframe.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
-          <caret line="29" column="15" selection-start-line="29" selection-start-column="15" selection-end-line="29" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/working_copy.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="1615">
-          <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/icji-menubar.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1156">
@@ -765,21 +755,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/icji-iframe.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
+          <caret line="29" column="15" selection-start-line="29" selection-start-column="15" selection-end-line="29" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/icji-1.3.0.full.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4539" max-vertical-offset="10846">
-          <caret line="291" column="8" selection-start-line="291" selection-start-column="8" selection-end-line="291" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="3672" max-vertical-offset="10846">
+          <caret line="224" column="18" selection-start-line="224" selection-start-column="18" selection-end-line="224" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/dashboard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25490198" vertical-offset="6137" max-vertical-offset="10574">
+        <state vertical-scroll-proportion="0.0" vertical-offset="7412" max-vertical-offset="10812">
           <caret line="374" column="75" selection-start-line="374" selection-start-column="75" selection-end-line="374" selection-end-column="75" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <marker date="1418142940408" expanded="true" signature="17958:17972" placeholder="..." />
+            <marker date="1418669084978" expanded="true" signature="18402:18416" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/working_copy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45046082" vertical-offset="0" max-vertical-offset="1564">
+          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>

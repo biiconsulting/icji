@@ -8,6 +8,7 @@ log.setLevel(log4javascript.Level.ALL);
 log.trace("This is a debugging message from the log4javascript in-page page");
 
 ICJI.uiClean.portlet();             // Hide Headers
+ICJI.prompt.overrideButtonClick("button_Apply_Filters");
 ICJI.prompt.m2m.build({             // Setup Global Prompt objects
     "promptPrefix" : "po_",
     "promptBlockPrefix" : "pb_",
@@ -25,33 +26,28 @@ ICJI.iframe.build({                 // Initial frame load
 
 
 
+
 /**
-     * Build menu in table in preparation for running the Vista Buttons stuff
-     */
+ * Build menu in table in preparation for running the Vista Buttons stuff
+ */
 parseMenuData();
 
-    /**
-     * Load Vista Buttons JS
-     * TODO: I have GOT to rebuild this awful Menu code...
-     */
+/**
+ * Load Vista Buttons JS
+ * TODO: I have GOT to rebuild this awful Menu code...
+ */
 log.info('Load dropdownmenu.js');
 $icji.getScript('/cognos/skins/greif/icji/js/dropdownmenu.js')
-.done( function() {
-    log.debug('Succesfully loaded dropdownmenu.js');
-    vistaButtons({ subFrame: 0 }); }
+    .done( function() {
+        log.debug('Succesfully loaded dropdownmenu.js');
+        vistaButtons({ subFrame: 0 }); }
 )
-.fail( function() {
-    log.debug('Failed to load script.'); }
+    .fail( function() {
+        log.debug('Failed to load script.'); }
 );
 log.debug('Completed vistaButton Build');
 
 
-
-    /**
-     * Initial frame load
-     */
-ICJI.iframe.id = 'icji-iframeContent';
-ICJI.iframe.setSource("/content/folder[@name='Development']/folder[@name='Chris']/folder[@name='SBP Prototype']/report[@name='SLS001 - Sales Volume/Revenue Trend']","SLS001 - Sales Volume/Revenue Trend","Sales > Sales Trend");
 
 
 
@@ -73,7 +69,7 @@ $icji('#menuMoveRight')
     // move the mouse from over the button to stop the animation
     .mouseout(function () {
         $icji('#mainMenu_table').stop(); }
-    );
+);
 
 // Left side button - work the same as the right side in reverse
 $icji('#menuMoveLeft')
@@ -87,3 +83,4 @@ $icji('#menuMoveLeft')
     .mouseout(function () {
         $icji('#mainMenu_table').stop();
     });
+
