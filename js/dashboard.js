@@ -153,17 +153,19 @@ ICJI.iframe = {
     setSource: function (p, n, b, g) {
         this.loading().show();
         var cr = this.currenReport,
-            gp = "";
-        cr.location = ICJI.urlApi.defaultFrameUri(p, n);
+            gp = "",
+            loc;
+        cr.location = p;
         cr.name = n;
         cr.breadcrumb = b;
         cr.useGlobalPrompts = g;
+        loc = ICJI.urlApi.defaultFrameUri(p, n);
         this.breadcrumbs(b);
         if (cr.useGlobalPrompts) {
             gp = ICJI.prompt.getPromptString();
         }
-        document.getElementById(this.id).src = cr.location + gp;
-        log.info('Set ' + this.id + ' Source to: ' + cr.location + gp +
+        document.getElementById(this.id).src = loc + gp;
+        log.info('Set ' + this.id + ' Source to: ' + loc + gp +
             '\n    path: ' + cr.breadcrumb + '\n    name: ' + cr.name);
     }
 };
