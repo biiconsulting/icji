@@ -73,6 +73,45 @@ ICJI.uiClean = {
     }
 };
 
+ICJI.defaults = {
+    RUNTYPE: "runType",
+    RT_GET: "get",
+    RT_SET: "set",
+    USERNAME: "username",
+    GROUPID: "groupId",
+    BREADCRUMB: "breadcrumb",
+    RPT_NAME: "rptName",
+    RPT_PATH: "rptPath",
+    DEFAULT_PARAMS: "defaultParams",
+    postSuccess: false,
+    postJSON: function (data) {
+        this.postSuccess = false;
+        $icji.post("",
+            data,
+            function () { ICJI.defaults.postSuccess = true; },
+            "json");
+    },
+    get: function (type, usr, grp) {
+        var data = {};
+        data[this.RUNTYPE] = type;
+        data[this.USERNAME] = usr;
+        data[this.GROUPID] = grp;
+        var resultJSON = this.postJSON(data);
+        /** TODO: Build out parameter set functions base on results **/
+    },
+    set: function (type, usr, grp, brd, rnm, pth, dpr) {
+        var data = {};
+        data[this.RUNTYPE] = type;
+        data[this.USERNAME] = usr;
+        data[this.GROUPID] = grp;
+        data[this.BREADCRUMB] = brd;
+        data[this.RPT_NAME] = rnm;
+        data[this.RPT_PATH] = pth;
+        data[this.DEFAULT_PARAMS] = dpr;
+        this.postJSON(data);
+    }
+};
+
 /**
  * Sets the height of the iframe that is used to display the reports.
  */
