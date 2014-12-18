@@ -72,7 +72,9 @@ ICJI.uiClean = {
         this.hidePortletHead();
     }
 };
-
+/**
+ *  Stores functions for setting user defaults on reports/dashboard.
+ */
 ICJI.defaults = {
     RUNTYPE: "runType",
     RT_GET: "get",
@@ -83,14 +85,26 @@ ICJI.defaults = {
     RPT_NAME: "rptName",
     RPT_PATH: "rptPath",
     DEFAULT_PARAMS: "defaultParams",
+    servletURL: "",
     postSuccess: false,
+    /**
+     * run a post request to the servlet that gets the user defaults
+     * @param data - JSON object to be passed the servlet
+     */
     postJSON: function (data) {
         this.postSuccess = false;
-        $icji.post("",
+        $icji.post(ICJI.defaults.servletURL,
             data,
             function () { ICJI.defaults.postSuccess = true; },
             "json");
     },
+    /**
+     * Builds the request information for retrieving the user defaults from the
+     * servlet via the postJSON function
+     * @param type - type of request being sent to the server
+     * @param usr - username of the user running the report
+     * @param grp - distinguishes between multiple reports/dashboards
+     */
     get: function (type, usr, grp) {
         var data = {};
         data[this.RUNTYPE] = type;
@@ -99,6 +113,17 @@ ICJI.defaults = {
         var resultJSON = this.postJSON(data);
         /** TODO: Build out parameter set functions base on results **/
     },
+    /**
+     * Builds the request information for setting the user defaults with the
+     * servlet via the postJSON function
+     * @param type - type of request being sent to the server
+     * @param usr - username of the user running the report
+     * @param grp - distinguishes between multiple reports/dashboards
+     * @param brd - breadcrumb of the report location in the menu
+     * @param rnm - name of the report to run by default
+     * @param pth - path of the report to run by default
+     * @param dpr - default settings for prompts on the report/dashboard
+     */
     set: function (type, usr, grp, brd, rnm, pth, dpr) {
         var data = {};
         data[this.RUNTYPE] = type;
