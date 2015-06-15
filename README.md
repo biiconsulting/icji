@@ -1,7 +1,7 @@
 ﻿#ICJI - IBM Cognos JavaScript Interface
 
 
-Copyright (c) 2008 - 2014 Chris Bennett 
+Copyright (c) 2008 - 2015 Chris Bennett 
 
 This work is licensed under a Creative Commons 
   Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
@@ -97,9 +97,9 @@ to isolate those potential problem.
 
 As a consultant, I've spent many hours at dozens of client sights being paid 
 to do nothing but fix broken JavaScript code during system upgraded. Thus was 
-the birth of ICJI. It started out about 4 years ago as a hodge podge of code 
-from dozens of experiences all in random .js files. As the years progressed 
-and my understanding of JavaScript deepened it morphed in to what it is today.
+the birth of ICJI. It started out as a hodge podge of code from dozens
+of experiences all in random .js files. As the years progressed and 
+my understanding of JavaScript deepened it morphed in to what it is today.
 Now, it's grown to the point that I feel it's time to start officially 
 tracking the changes I'm making. Because this code, in one name or another, 
 has been used at so many client sites, there will come a time when they'll 
